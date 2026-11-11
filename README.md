@@ -23,17 +23,17 @@ Pré-requisitos:
 - Python 3.11 ou superior para os dois processos. O validador roda com Python 3.10+, sem dependências.
 - [uv](https://docs.astral.sh/uv/), que baixa o interpretador certo se preciso. Há uma alternativa com `pip` abaixo.
 
-Todos os comandos partem da pasta do desafio, `06-agente-a2a-com-mcp`.
+Todos os comandos partem da raiz do repositório.
 
 ### 1. Clonar e gerar a chave do `requestState` (uma vez)
 
 ```bash
-git clone https://github.com/mbombonato/mba-eng-ai-fullcycle.git
-cd mba-eng-ai-fullcycle/06-agente-a2a-com-mcp
+git clone https://github.com/mbombonato/mba-eng-ai-06-agente-a2a-com-mcp.git
+cd mba-eng-ai-06-agente-a2a-com-mcp
 echo "REQUEST_STATE_SECRET=$(python3 -c 'import secrets; print(secrets.token_hex(32))')" > .env
 ```
 
-O servidor MCP lê `REQUEST_STATE_SECRET` do ambiente e, se ela não estiver exportada, do `.env` desta pasta (que está no `.gitignore`).
+O servidor MCP lê `REQUEST_STATE_SECRET` do ambiente e, se ela não estiver exportada, do `.env` na raiz do repositório (que está no `.gitignore`).
 Também funciona exportar no terminal do servidor:
 
 ```bash
@@ -60,7 +60,7 @@ uv run python3 agente.py
 
 ### 4. Terminal 3: validador
 
-Na pasta do desafio, com os dois processos recém-iniciados:
+Na raiz do repositório, com os dois processos recém-iniciados:
 
 ```bash
 python3 validador/validar.py --agente http://localhost:7300 --mcp http://localhost:7301
@@ -79,7 +79,7 @@ A saída completa está em [Saída do validador](#saída-do-validador).
 
 ### Alternativa sem uv
 
-Um venv por processo, cada linha em um terminal, a partir da pasta do desafio:
+Um venv por processo, cada linha em um terminal, a partir da raiz do repositório:
 
 ```bash
 cd servidor-mcp && python3 -m venv .venv && .venv/bin/pip install -r requirements.txt && .venv/bin/python servidor.py
@@ -102,7 +102,7 @@ Os padrões já são os que o validador espera. A lista também está em `.env.e
 
 ## Atalhos para o fluxo do avaliador
 
-Os números são os passos da seção "Fluxo do avaliador" do enunciado. Rode a partir da pasta do desafio.
+Os números são os passos da seção "Fluxo do avaliador" do enunciado. Rode a partir da raiz do repositório.
 
 ```bash
 # passo 3: o card
